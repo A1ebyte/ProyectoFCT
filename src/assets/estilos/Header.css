@@ -1,0 +1,60 @@
+.menu {
+    position: relative;
+  width: 100%;
+  background-color: var(--azul-brand);  /* fondo azul oscuro */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.menu-nav {
+  display: flex;
+  align-items: center;       /* centrar verticalmente */
+  justify-content: space-between; /* logo izquierda, menú derecha */
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 10px 10px;
+  height: 60px; /* altura de la franja */
+  /*arreglar para ser responsive*/
+  flex-wrap: wrap;
+  height: auto;
+  /*                            */
+}
+
+.logo {
+  height: 60px; /* altura de la franja */
+  display: flex; /* centrar la imagen verticalmente */
+  align-items: center;
+}
+
+.logo img {
+  height: 100%;
+  object-fit: contain;
+}
+
+.menu-nav > ul {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+  list-style: none;
+  justify-content: center;
+  align-items: center; /* asegurar que los li estén alineados verticalmente */
+  padding: 0;
+  /*arreglar para ser responsive*/
+  flex-wrap: wrap;
+  /*                            */
+}
+
+.menu-nav > ul > a {
+  border-radius: 4px;
+  position: relative; /* para que subMenu se posicione */
+  cursor: pointer;
+  padding: 8px 12px;
+  color: var(--gris-claro); /* texto claro */
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.menu-nav > ul > a:hover{
+  text-shadow: 0 0 6px var(--turquesa);
+  transform: translateY(-2px);
+  color: var(--turquesa);               /* contraste fuerte */
+}

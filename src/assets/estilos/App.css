@@ -1,0 +1,16 @@
+#root {
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+body{
+    overflow-y: scroll;
+}
+
+.fondo{
+    height: 100%;
+}
+
+.Toastify__toast-container {
+  z-index: 99999 !important;
+}

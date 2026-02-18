@@ -1,0 +1,44 @@
+/* Estilos Generales */
+.Bienvenida {
+    text-align: center;
+}
+
+.Bienvenida>h1 {
+    margin-bottom: 10px;
+    text-transform: uppercase;  /* Para darle un toque más llamativo */
+}
+
+.Bienvenida>p {
+    color: var(--gris-claro);
+    margin: 0px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Títulos de Sección */
+.titulo-seccion {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 40px;
+    color: var(--accent); /* Verde neón vibrante */
+    padding: 0 15px;
+}
+
+.descripcion-seccion {
+    margin-bottom: 2rem;
+    color: var(--gris); /* Gris medio */
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0;
+    padding: 0 15px;
+}
+
+.verMasLink{
+    text-decoration: none;
+}
+
+.seccion .grid{
+    justify-content:space-evenly ;
+}

@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+:root {
+  font-family: "Quicksand", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  background-color: #121212;
+  color: var(--gris-claro);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --turquesa: #00d4d4;
+  --azul-brand: #0a2b5c;
+
+  --negro: #121212;
+  --gris: #8d8d8d;
+  --gris-claro: #d0d0d0;
+
+  --accent: #1e90ff;
+  --accent-soft: #87cefa;
+}
+
+.bordeBrillo {
+  text-shadow: 0 0px 10px var(--turquesa);
+  -webkit-text-stroke: 0.4px;
+  -webkit-text-stroke-color: var(--accent);
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Quicksand", sans-serif;
+}
+
+h1,
+h2,
+h3,
+.pixel {
+  letter-spacing: 0.5px;
+  font-family: "Pixelify Sans", sans-serif;
+  text-shadow: 0 0 6px var(--turquesa);
+}
+
+h1 {
+  font-size: 3.2rem;
+  color: var(--turquesa);
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+h3 {
+  font-size: 1.65rem;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--gris-claro);
+}
+
+.InicioContenedor {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  padding-bottom: 42px;
+  min-height: 672px; /*esto amcomodar para responsive*/
+}
+
+.scanline {
+  position: relative;
+  z-index: 50;
+}
+
+.scanline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 3px,
+    transparent 3px,
+    transparent 6px
+  );
+  pointer-events: none;
+  background-size: 100% 6px;
+  animation: scan 1s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 10px;
+  }
+}
+
+@keyframes subtle-glitch {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(1px, 0);
+  }
+  40% {
+    transform: translate(-1px, 1px);
+  }
+  60% {
+    transform: translate(1px, -1px);
+  }
+  80% {
+    transform: translate(-1px, 0);
+  }
+}
+
+.toast {
+  background: #141414; /* mismo gris oscuro de tu layout */
+  color: var(--gris-claro);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  min-width: 220px;
+  max-width: 320px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(30, 144, 255, 0.2); /* acento azul suave */
+}
+
+.toast-body {
+  margin: 0;
+}
+
+.Toastify__toast {
+  animation:
+    slideIn 0.25s ease,
+    fadeOut 0.25s ease 3s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+/* colores según tipo */
+.Toastify__toast--success {
+  border-left: 4px solid var(--turquesa);
+} /* azul acento */
+.Toastify__toast--error {
+  border-left: 4px solid #e63946;
+} /* rojo */
+.Toastify__toast--info {
+  border-left: 4px solid var(--gris);
+} /* verde */
+.Toastify__toast--warning {
+  border-left: 4px solid var(--accent);
+} /* amarillo */
+
+.Toastify__toast--success svg {
+  fill: var(--turquesa); /* azul acento */
+}
+
+.Toastify__toast--error svg {
+  fill: #e63946; /* rojo */
+}
+
+.Toastify__toast--info svg {
+  fill: var(--gris); /* verde */
+}
+
+.Toastify__toast--warning svg {
+  fill: var(--accent); /* amarillo */
+}

@@ -1,0 +1,20 @@
+.grid {
+    --columnas:4;  /*columnas a elegir*/
+    /*agarro el 100% del contenedor le resto el numero de columnas-1 que son todos los gaps que hay entre ellas, 
+        ese valor se multiplica por el valor de los gaps y se divide entre las columanas para saber su tamaño ideal*/
+    --ideal: calc((100% - (var(--columnas) - 1) * var(--gap))/ var(--columnas));  /*calculo el tamaño para todas las columnas*/
+    --gap: 25px; /*espacio entre tarjetas*/
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 35px 0;
+    display: grid;
+    max-width: 1440px; /* quitar en un futuro */    
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, clamp(220px, var(--ideal), 100%)); /*fumada para columnas responsive*/
+    column-gap: var(--gap);
+    row-gap: var(--gap);
+}
+
+.grid.horizontal{
+    grid-template-columns: 1fr
+}

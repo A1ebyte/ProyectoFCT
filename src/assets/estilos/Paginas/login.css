@@ -1,0 +1,176 @@
+/* Card principal */
+.login-card {
+  margin: 3rem auto;
+  position: relative;
+
+  border: 1px solid #262626;
+  border-radius: 14px;
+  padding: 2.5rem;
+  max-width: 900px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+  animation: fadeIn 0.45s ease-out;
+}
+
+/* Título */
+.login-card > h1 {
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--turquesa);
+}
+
+/* Grid */
+.login-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.login-grid.reverse {
+  direction: rtl;
+}
+
+.login-grid.reverse > * {
+  direction: ltr;
+}
+
+/* IZQUIERDA */
+.login-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.login-left form * {
+  margin-top: 10px;
+}
+
+.login-left form {
+  padding: 20px;
+}
+
+/* Estilos para los campos de entrada (input y textarea) */
+.login-left input {
+  width: 100%; /* Hacer que los campos ocupen todo el ancho disponible */
+  padding: 10px; /* Espaciado interno */
+  margin-bottom: 12px; /* Separar los campos de los siguientes */
+  border: 1px solid #262626;
+  border-radius: 4px; /* Bordes redondeados */
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+.login-left input:focus{
+  border-color: var(--turquesa); /* Color de borde al enfocarse */
+  outline: none; /* Eliminar el borde por defecto */
+  box-shadow: 0 0 5px var(--accent); /* Efecto sutil al enfocarse */
+}
+
+/* Labels */
+.login-left label {
+  color: var(--gris-claro);
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* Inputs (sin fondo añadido) */
+.login-left input {
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.95rem;
+  color: var(--gris-claro);
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-left input:focus {
+  outline: none;
+  border-color: var(--turquesa);
+  box-shadow: 0 0 0 2px rgba(0, 212, 212, 0.15);
+}
+
+/* Toggle login/registro */
+.toggle-button {
+  margin-top: 0.8rem;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.toggle-button:hover {
+  transform: translateY(-2px);
+  color: var(--turquesa);
+      text-shadow: 0 0 6px var(--turquesa);
+}
+
+/* Error */
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+}
+
+/* DERECHA (imagen limpia) */
+.login-right {
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.login-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .login-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .login-right {
+    display: none;
+  }
+}
+
+/* Entrada desde la derecha */
+.slide-right {
+  animation: slideInRight 0.45s cubic-bezier(.22,.61,.36,1);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px) scale(0.98);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Entrada desde la izquierda */
+.slide-left {
+  animation: slideInLeft 0.45s cubic-bezier(.22,.61,.36,1);
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px) scale(0.98);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}

@@ -1,0 +1,25 @@
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.contact-buttons button {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    min-width: 140px; /* evita que se vea muy pequeño */
+    background: #23232363;
+    color: var(--turquesa);
+    border: 2px solid var(--turquesa);;
+}
+
+.contact-buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.2);
+}
