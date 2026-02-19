@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ServicioGeneros from "../../../servicios/Axios/ServicioGeneros.js";
 import { enviarNoti, typeToast } from "../../../toolkit/notificacionToast.js";
 import "../../../estilos/OperacionesCrud.css";
-
+/*Y esos iconos ?? que visual ❌❌❌❌❌ ✅✅✅✅✅✅ te has esforzado mucho */
 function GeneroCrear({ generos = [], setGeneros, onClose }) {
   const [nombre, setNombre] = useState("");
   const [error, setError] = useState("");
