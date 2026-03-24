@@ -22,6 +22,7 @@ public class ServicioCheapShark {
 
 	private final RestClient restClient;
     private final ServicioAsyncCheapShark asyncService;
+    //private final int MAXPAGES=5;
 
 	public ServicioCheapShark(@Qualifier("restClientCheapShark") RestClient restClient, ServicioAsyncCheapShark asyncService) {
 		this.restClient = restClient;
@@ -39,7 +40,8 @@ public class ServicioCheapShark {
 		// Leer el header
 		String totalPagesHeader = dealsPag0.getHeaders().getFirst("X-Total-Page-Count");
 		int totalPages = totalPagesHeader != null ? Integer.parseInt(totalPagesHeader) : 1;
-
+		//totalPages = totalPages>=MAXPAGES?MAXPAGES:totalPages;
+		
 		List<CompletableFuture<List<OfertaDTO>>> futures = new ArrayList<>();
 
 		for (int page = 1; page < totalPages; page++) {

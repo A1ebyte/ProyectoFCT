@@ -21,6 +21,12 @@ public class ServicioAsyncCheapShark {
 	
 	@Async("cheapSharkExecutor")
 	public CompletableFuture<List<OfertaDTO>> fetchPage(int page) {
+	    try {
+	    	long delay = page * 100 + (long)(Math.random() * 300);
+	    	Thread.sleep(delay);
+	    } catch (InterruptedException e) {
+	        Thread.currentThread().interrupt();
+	    }
 	    System.out.println("Descargando página " + page + " en hilo: " + Thread.currentThread().getName());
 	    
 		List<OfertaDTO> deals = restClient.get()

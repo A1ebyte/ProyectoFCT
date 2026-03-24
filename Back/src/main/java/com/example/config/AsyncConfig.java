@@ -12,9 +12,9 @@ public class AsyncConfig {
 	@Bean
 	public Executor cheapSharkExecutor() {
 		ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-		executor.setCorePoolSize(10); // hilos mínimos
-		executor.setMaxPoolSize(20); // hilos máximos
-		executor.setQueueCapacity(100); // tareas en cola
+		executor.setCorePoolSize(3); // hilos mínimos
+		executor.setMaxPoolSize(4); // hilos máximos
+		executor.setQueueCapacity(60); // tareas en cola
 		executor.setThreadNamePrefix("CheapShark-");
 		executor.initialize();
 		return executor;
