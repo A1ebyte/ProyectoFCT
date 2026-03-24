@@ -18,17 +18,21 @@ public class ServicioAsyncCheapShark {
 	public ServicioAsyncCheapShark(@Qualifier("restClientCheapShark") RestClient restClient) {
 		this.restClient = restClient;
 	}
-	
+
 	@Async("cheapSharkExecutor")
-	public CompletableFuture<List<OfertaDTO>> fetchPage(int page) {
-	    try {
-	    	long delay = page * 100 + (long)(Math.random() * 300);
-	    	Thread.sleep(delay);
-	    } catch (InterruptedException e) {
-	        Thread.currentThread().interrupt();
-	    }
-	    System.out.println("Descargando página " + page + " en hilo: " + Thread.currentThread().getName());
-	    
+	public CompletableFuture<List<OfertaDTO>> fetchPage(int page, int totalPages) {
+		long start = System.currentTimeMillis();
+
+		// Delay para evitar bloqueo, probar luego
+		try {
+			long delay = page * 100 + (long) (Math.random() * 300);
+			Thread.sleep(delay);
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+		}
+
+		long afterDelay = System.currentTimeMillis();
+
 		List<OfertaDTO> deals = restClient.get()
 				.uri(uriBuilder -> uriBuilder.path("deals").queryParam("pageNumber", page).build()).retrieve()
 				.body(TypeRefs.LIST_OF_OFERTAS);
@@ -38,6 +42,11 @@ public class ServicioAsyncCheapShark {
 
 		List<OfertaDTO> filtered = deals.stream().filter(d -> !ServicioCheapShark.isDLC(d)).toList();
 
+		long end = System.currentTimeMillis();
+
+		System.out.println("Página " + (page+1) + "/" + totalPages + " | delay=" + (afterDelay - start) + " ms"
+				+ " | petición=" + (end - afterDelay) + " ms" + " | total=" + (end - start) + " ms" + " ("
+				+ filtered.size() + " ofertas)");
 		return CompletableFuture.completedFuture(filtered);
 	}
 }

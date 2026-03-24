@@ -8,7 +8,6 @@ import java.util.concurrent.CompletableFuture;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -31,22 +30,24 @@ public class ServicioCheapShark {
 
 	// esta seria para actualizar datos, usarse cada 6h (con @Scheduled)
 	public List<OfertaDTO> FetchAllDeals() {
+		long totalStart = System.currentTimeMillis();
+
 		ResponseEntity<List<OfertaDTO>> dealsPag0 = restClient.get()
 				.uri(uriBuilder -> uriBuilder.path("deals").queryParam("pageNumber", 0).build()).retrieve()
 				.toEntity(TypeRefs.LIST_OF_OFERTAS);
-
+		
 		List<OfertaDTO> firstPage = dealsPag0.getBody().stream().filter(d -> !isDLC(d)).toList();
 
-		// Leer el header
-		String totalPagesHeader = dealsPag0.getHeaders().getFirst("X-Total-Page-Count");
+		String totalPagesHeader = dealsPag0.getHeaders().getFirst("X-Total-Page-Count");  // Leer el header
 		int totalPages = totalPagesHeader != null ? Integer.parseInt(totalPagesHeader) : 1;
 		//totalPages = totalPages>=MAXPAGES?MAXPAGES:totalPages;
 		
 		List<CompletableFuture<List<OfertaDTO>>> futures = new ArrayList<>();
 
 		for (int page = 1; page < totalPages; page++) {
-			futures.add(asyncService.fetchPage(page));
+			futures.add(asyncService.fetchPage(page,totalPages));
 		}
+		
 		System.out.println("Esperando a que terminen todas las páginas...");
 		CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join(); // Esperar a que todos terminen (ignorar el 0)
 		System.out.println("Todas las páginas completadas.");																			
@@ -60,7 +61,12 @@ public class ServicioCheapShark {
 		
         List<OfertaDTO> finalList = new ArrayList<>(firstPage);
         finalList.addAll(otherPages);
+        
+        long totalEnd = System.currentTimeMillis();
+        long totalDuration = totalEnd - totalStart;
 
+        System.out.println("Importación completada en " + (totalDuration / 1000.0) + " segundos");
+        
         return finalList;
 	}
 

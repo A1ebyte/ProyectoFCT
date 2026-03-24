@@ -10,9 +10,9 @@ public record OfertaDTO(
         String steamAppID, //ForeignKey
         String dealID, //PrimaryKey
         String thumb,
-        String lastChange,
+        String lastChange, //reciente
         int storeID, //ForeignKey
-        int isOnSale,
+        int isOnSale, //quitar?
         double dealRating,
         double salePrice,
         double normalPrice,

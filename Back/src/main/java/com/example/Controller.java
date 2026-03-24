@@ -30,7 +30,7 @@ public class Controller {
     }
     
     @GetMapping("/top10") //usamos ? dentro de ResponseEntity para decir que es cualquier cosa
-    public ResponseEntity<?> top10Gamedeals(@RequestParam(required = false,defaultValue = "Recent",name = "type") String type){
+    public ResponseEntity<?> top10Gamedeals(@RequestParam(required = false,defaultValue = "DealRating",name = "type") String type){
     	try {
             SortBy sort = SortBy.valueOf(type);
             return ResponseEntity.ok(servicioCheapShark.top10Deals(sort));
