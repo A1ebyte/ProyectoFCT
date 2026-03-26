@@ -1,27 +1,26 @@
-.menu {
+/* .menu {
     position: relative;
   width: 100%;
-  background-color: var(--azul-brand);  /* fondo azul oscuro */
+  background-color: var(--accent); 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .menu-nav {
   display: flex;
-  align-items: center;       /* centrar verticalmente */
-  justify-content: space-between; /* logo izquierda, menú derecha */
+  align-items: center;     
+  justify-content: space-between;
   max-width: 1440px;
   margin: 0 auto;
   padding: 10px 10px;
   height: 60px; /* altura de la franja */
-  /*arreglar para ser responsive*/
+  /*arreglar para ser responsive
   flex-wrap: wrap;
   height: auto;
-  /*                            */
 }
 
 .logo {
-  height: 60px; /* altura de la franja */
-  display: flex; /* centrar la imagen verticalmente */
+  height: 60px;
+  display: flex;
   align-items: center;
 }
 
@@ -36,19 +35,18 @@
   height: 100%;
   list-style: none;
   justify-content: center;
-  align-items: center; /* asegurar que los li estén alineados verticalmente */
+  align-items: center; 
   padding: 0;
-  /*arreglar para ser responsive*/
+
   flex-wrap: wrap;
-  /*                            */
 }
 
 .menu-nav > ul > a {
   border-radius: 4px;
-  position: relative; /* para que subMenu se posicione */
+  position: relative; 
   cursor: pointer;
   padding: 8px 12px;
-  color: var(--gris-claro); /* texto claro */
+  color: var(--gris-claro); 
   font-weight: bold;
   transition: 0.2s ease;
 }
@@ -56,5 +54,246 @@
 .menu-nav > ul > a:hover{
   text-shadow: 0 0 6px var(--turquesa);
   transform: translateY(-2px);
-  color: var(--turquesa);               /* contraste fuerte */
+  color: var(--turquesa);      
+}*/
+/* ============================================================
+   HEADER — Quest-Hub dark gaming style
+   ============================================================ */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #0d1b2a;
+  /*background-color: var(--negro);*/
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 60px;
+  gap: 24px;
+}
+
+/* ── LOGO ────────────────────────────────────────────────── */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.header-logo img {
+  height: 36px;
+  width: auto;
+}
+
+.header-logo-text {
+  font-family: "Press Start 2P", monospace, sans-serif;
+  font-size: 0.85rem;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ── CENTER NAV LINKS ────────────────────────────────────── */
+.header-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.header-link {
+  color: #d0d8e4;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.header-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── GENRES DROPDOWN ─────────────────────────────────────── */
+.header-genres-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.header-genres-btn .arrow {
+  font-size: 0.65rem;
+  opacity: 0.7;
+}
+
+.header-dropdown-wrapper {
+  position: relative;
+}
+
+.header-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111d2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  min-width: 160px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  z-index: 200;
+}
+
+.header-dropdown-item {
+  display: block;
+  color: #c0cad8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 8px 18px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.header-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+}
+
+/* ── RIGHT SIDE ──────────────────────────────────────────── */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Search bar */
+.header-search {
+  display: flex;
+  align-items: center;
+  background: #1a2a3d;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.header-search:focus-within {
+  border-color: rgba(74, 144, 226, 0.6);
+}
+
+.header-search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 0.85rem;
+  padding: 7px 12px;
+  width: 200px;
+}
+
+.header-search-input::placeholder {
+  color: #5a7080;
+}
+
+.header-search-btn {
+  background: transparent;
+  border: none;
+  color: #7a8fa0;
+  padding: 7px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.header-search-btn:hover {
+  color: #ffffff;
+}
+
+/* Sign In button */
+.header-signin-btn {
+  background: #1a6fd8;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.header-signin-btn:hover {
+  background: #1f82ff;
+  transform: translateY(-1px);
+}
+
+/* Wishlist link (logged-in) */
+.wishlist-link {
+  font-size: 0.85rem;
+}
+
+/* Avatar icon (logout button) */
+.header-avatar {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c0cad8;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.header-avatar:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .header-search-input {
+    width: 130px;
+  }
+
+  .header-links {
+    gap: 2px;
+  }
+
+  .header-logo-text {
+    display: none;
+  }
+}
+
+@media (max-width: 580px) {
+  .header-search {
+    display: none;
+  }
 }
