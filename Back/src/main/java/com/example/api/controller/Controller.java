@@ -25,7 +25,7 @@ public class Controller {
     //todo esto deberia ser con la bbdd
 	@GetMapping("/{id}")
     public ResponseEntity<?> getJuego(@PathVariable(name = "id") long id) {
-        return ResponseEntity.ok(steamClient.getGame(id));
+		return ResponseEntity.ok(steamClient.getGame(id));
     }
     
     @GetMapping("/deals") //usamos ? dentro de ResponseEntity para decir que es cualquier cosa
