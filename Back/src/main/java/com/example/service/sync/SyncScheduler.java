@@ -32,6 +32,6 @@ public class SyncScheduler {
     // Ejecuta cada 10 seg
     @Scheduled(fixedDelay = 10000)
     public void test() {
-    	System.out.println("PEPE la peua");
+    	System.out.println("test");
     }
 }

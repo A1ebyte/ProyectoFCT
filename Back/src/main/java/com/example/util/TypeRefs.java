@@ -16,6 +16,6 @@ public class TypeRefs {
 	public static final ParameterizedTypeReference<List<TiendaDTO>>
 		LIST_OF_TIENDAS = new ParameterizedTypeReference<>() {};
 		
-		public static final ParameterizedTypeReference<Map<String, SteamWrapper>>
+	public static final ParameterizedTypeReference<Map<String, SteamWrapper>>
         STEAM_DATA = new ParameterizedTypeReference<>() {};
 }
